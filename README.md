@@ -1,0 +1,2 @@
+# Project_Manage-django
+使用django框架开发的项目组工作日志管理系统
