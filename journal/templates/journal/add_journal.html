@@ -1,0 +1,80 @@
+{% extends "journal/base.html" %}
+{% load static %}
+
+{% block extend_css %}
+{% endblock %}
+
+{% block sidebar%}    
+    <div id="sidebar">
+        <a href="#" class="visible-phone"><i class="icon icon-th-list"></i> Tables</a>
+        <ul>
+            <li><a href="{% url 'journal:index' %}"><i class="icon icon-home"></i> <span>日志查询</span></a></li>
+            <li class='active'><a href="{% url 'journal:add_journal' %}"><i class="icon icon-pencil"></i> <span>填写日志</span></a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block breadcrumb %}
+    <a href="{% url 'journal:add_journal' %}" class="current">填写日志</a>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon">
+                            <i class="icon-align-justify"></i>                                  
+                        </span>
+                        <h5>填写工作日志</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <form action="{% url 'journal:add_journal' %}" method="post" class="form-horizontal" id="basic_validate" novalidate="novalidate"/>
+                            {% csrf_token %}
+                            <div class="control-group">
+                                <label class="control-label">工作内容</label>
+                                <div class="controls">
+                                    <textarea name="j_work" placeholder="填写该工作内容" id="required"></textarea>
+                                </div>
+                                <label class="control-label" id="required">工作进度(%)</label>
+                                <div class="controls">
+                                    <input type="text" name="j_process"></input>
+                                </div>
+                                <label class="control-label">耗时(h)</label>
+                                <div class="controls">
+                                    <input type="text" name="j_time"></input>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">问题和风险</label>
+                                <div class="controls">
+                                    <textarea name="j_question" placeholder="当前工作是否受到阻塞、是否有延期等风险"></textarea>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">明日计划</label>
+                                <div class="controls">
+                                    <textarea name="j_plan" placeholder="填写明日工作计划"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary" name="j_save">保存</button>
+                                <button type="submit" class="btn btn-primary" name="j_save_add">保存并填写下一条</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>                      
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+            </div>
+        </div>        
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'journal/js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'journal/js/unicorn.form_common.js' %}"></script>
+{% endblock %}

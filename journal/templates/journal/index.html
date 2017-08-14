@@ -1,0 +1,55 @@
+{% extends "journal/base.html" %}
+{% load static %}
+
+{% block breadcrumb %}
+	<a href="{% url 'journal:index' %}" class="current">日志查询</a>
+{% endblock %}
+
+{% block content %}
+
+                
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="widget-box">
+                            <div class="widget-title">
+                                <h5></h5>
+                            </div>
+                            <div class="widget-content nopadding">
+                                <table class="table table-bordered data-table">
+                                    <thead>
+                                    <tr>
+                                    <th class="span2">姓名</th>
+                                    <th class="span6">今日工作</th>
+                                    <th class="span2">进度</th>
+                                    <th class="span2">耗时</th>
+                                    <th class="span4">问题&amp;风险</th>
+                                    <th class="span6">明日计划</th>
+                                    <th class="span2">日期</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for journal in journal_list%}
+                                    <tr class="gradeU">
+                                    <td><a href="{% url 'journal:modify_journal' journal.id %}">{{ journal.real_name }}</td>
+                                    <td>{{ journal.work_today }}</td>
+                                    <td>{{ journal.process }}</td>
+                                    <td>{{ journal.time_consumed }}</td>
+                                    <td>{{ journal.question }}</td>
+                                    <td>{{ journal.plan_tomorrow }}</td>
+                                    <td>{{ journal.date|date:"Y-m-d" }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    </table>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
+
+{% block script %}
+	<script src="{% static 'journal/js/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static 'journal/js/unicorn.tables.js' %}"></script>
+{% endblock %}

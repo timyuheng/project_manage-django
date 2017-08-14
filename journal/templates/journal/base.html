@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-ch">
+	<head>
+		<title>日志管理小站</title>
+		<meta charset="Unicode" />
+		{% load static %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{% static 'journal/css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'journal/css/bootstrap-responsive.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'journal/css/uniform.css' %}" />
+        <link rel="stylesheet" href="{% static 'journal/css/select2.css' %}" />		
+        <link rel="stylesheet" href="{% static 'journal/css/unicorn.main.css' %}" />
+        <link rel="stylesheet" href="{% static 'journal/css/unicorn.grey.css' %}" class="skin-color" />
+        {% block extend_css %}
+        {% endblock %}
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+	<body>
+		<div id="header"> 
+			<h1>日志管理</h1>		
+		</div>
+		<div id="user-nav" class="navbar navbar-inverse">
+            <ul class="nav btn-group">
+                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">{{ username }}</span></a></li>
+
+                <!-- <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">修改密码</span></a></li> -->
+                <li class="btn btn-inverse"><a title="" href="{% url 'journal:user_logout' %}"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+            </ul>
+        </div>
+
+        {% block sidebar%}    
+		<div id="sidebar">
+			<a href="#" class="visible-phone"><i class="icon icon-th-list"></i> Tables</a>
+			<ul>
+				<li class='active'><a href="{% url 'journal:index' %}"><i class="icon icon-home"></i> <span>日志查询</span></a></li>
+				<li><a href="{% url 'journal:add_journal' %}"><i class="icon icon-pencil"></i> <span>填写日志</span></a></li>
+			</ul>
+		</div>
+        {% endblock %}
+
+		<div id="content">
+            <div id="breadcrumb">
+                <a href="{% url 'journal:index'%}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>首页</a>
+                {% block breadcrumb %}
+                {% endblock %}
+            </div>
+            {% block content%}
+            {% endblock %}
+            {% block footer%}
+            <div class="row-fluid">
+					<div id="footer" class="span12">
+						2017 &copy; 杭州高创电子技术有限公司 -- 平台测试组
+					</div>
+			</div>
+            {% endblock %}
+		</div>
+            <script src="{% static 'journal/js/jquery.min.js' %}"></script>
+            <script src="{% static 'journal/js/jquery.ui.custom.js' %}"></script>
+            <script src="{% static 'journal/js/bootstrap.min.js' %}"></script>
+            <script src="{% static 'journal/js/jquery.uniform.js' %}"></script>
+            <script src="{% static 'journal/js/select2.min.js' %}"></script>
+            <script src="{% static 'journal/js/unicorn.js' %}"></script>
+            <script src="{% static 'journal/js/unicorn.form_validation.js' %}"></script>
+            <script src="{% static 'journal/js/jquery.validate.js' %}"></script>
+            {% block script %}
+            {% endblock %}
+            
+	</body>
+</html>

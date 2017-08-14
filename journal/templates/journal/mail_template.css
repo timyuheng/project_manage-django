@@ -1,0 +1,11 @@
+.journal_table{
+    border: solid 1px;
+    border-collapse: collapse;
+}
+.journal_table th{
+    border: solid 1px;
+    background-color: cadetblue;
+}
+.journal_table td{
+    border: solid 1px;
+}
