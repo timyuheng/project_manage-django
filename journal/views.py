@@ -30,7 +30,7 @@ def user_login(request):
 @login_required
 def index(request):
     '''
-    首页，显示当日日志填写情况
+    首页，显示近七天日志填写情况
     '''
     journal_list = get_journal_info(request.user)
     real_name = request.user.get_full_name().replace(' ', '')
