@@ -13,6 +13,7 @@
         <div id="logo">
             <!-- <img src="{% static 'journal/img/login.png' %}" alt="" /> -->
         </div>
+        <div id="background" class="wall"></div>
         <div id="loginbox">            
             <form id="loginform" class="form-vertical" action="{% url 'journal:user_login' %}" method="POST" data-toggle="validator"/>
             {% csrf_token %}
@@ -37,7 +38,7 @@
                     {% if error_message %}
                         <span class="pull-left">{{ error_message }}</span>
                     {% else %}
-                        <span class="pull-left"><a href="#" class="flip-link" id="to-recover">Lost password?</a></span>
+                        <span class="pull-left"><a href="#" class="flip-link" id="to-recover">忘记密码?</a></span>
                     {% endif %}
                     <span class="pull-right"><input type="submit" class="btn btn-inverse" value="登陆" /></span>
                 </div>
@@ -52,7 +53,7 @@
                     </div>
                 </div>
                 <div class="form-actions">
-                    <span class="pull-left"><a href="#" class="flip-link" id="to-login">&lt; Back to login</a></span>
+                    <span class="pull-left"><a href="#" class="flip-link" id="to-login">&lt; 返回登录页面</a></span>
                     <span class="pull-right"><input type="submit" class="btn btn-inverse" value="Recover" /></span>
                 </div>
             </form>

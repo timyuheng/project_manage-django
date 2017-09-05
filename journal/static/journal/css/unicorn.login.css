@@ -15,16 +15,51 @@ body {
     background-image: -ms-linear-gradient(top, #555555 0%, #111111 100%);
     background-image: -o-linear-gradient(top, #555555 0%, #111111 100%);
     background-image: linear-gradient(top, #555555 0%, #111111 100%);*/
-    background-image: url(../img/login.gif);
+    /*background-image: url(../img/login.gif);*/
     padding: 0;
     margin: 0;
+}
+
+* { margin: 0; padding: 0; border: 0; } 
+
+@-webkit-keyframes STAR-MOVE {
+    from {
+        background-position:0% 0%
+    }
+    to { 
+        background-position: 600% 0%
+    }
+}
+ @keyframes STAR-MOVE {
+    from {
+        background-position: 0% 0%
+    }
+    to { 
+        background-position: 600% 0%
+    }
+}
+.wall{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    
+}
+div#background{
+    background: black url('../img/background.png') repeat-x 5% 0%;
+    background-size: cover;
+    -webkit-animation: STAR-MOVE  200s linear infinite;
+    -moz-animation: STAR-MOVE  200s linear infinite;
+    -ms-animation: STAR-MOVE  200s linear infinite;
+    animation: STAR-MOVE  200s linear infinite;
 }
 
 #logo, #loginbox {
     width: 400px;
     margin-left: auto;
     margin-right: auto;
-    margin-top:100px;
+    margin-top:150px;
     position: relative;
 }
 #logo {
